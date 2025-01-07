@@ -1,0 +1,37 @@
+<!-- <div class="mainApp-nav">Main App</div>
+
+@if (isLoggedIn$ | async) {
+  <p>User LOGGED</p>
+  <a routerLink="dashboard" class="">Dashboard</a>
+  <h1>proutos logged</h1>
+} @else {
+  <p>User NOT LOGGED</p>
+}
+<router-outlet></router-outlet> -->
+
+
+<!-- <div class="mainApp-nav">Main App</div>
+    <div *ngIf="isLoggedIn$ | async; else signIn">
+      You are authenticated so you can see this content.
+
+      <a routerLink="dashboard" class="">Dashboard</a>
+
+    </div>
+    <ng-template #signIn><router-outlet></router-outlet></ng-template>
+    <router-outlet></router-outlet> -->
+
+
+<div class="main-div">Main App</div>
+
+<div *ngIf="isLoggedIn$ | async; else signIn" class="sub-logged-div-content">
+  <p>You are authenticated so you can see this content.</p>
+  <a routerLink="dashboard" class="">Dashboard</a>
+  <a routerLink="" class="">Home</a>
+  <router-outlet></router-outlet>
+</div>
+
+<ng-template #signIn>
+  <p>You are not authenticated. Please log in.</p>
+  <router-outlet></router-outlet>
+</ng-template>
+
