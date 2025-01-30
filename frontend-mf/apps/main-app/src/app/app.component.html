@@ -33,16 +33,18 @@
   <p>Bienvenue {{ userConnected.email }} !</p>
   <a routerLink="dashboard" class="">Dashboard</a>
   <a routerLink="home" class="">Home</a>
-  <router-outlet></router-outlet>
+  <a routerLink="add-ad" class="">Add an ad</a>
+  <a routerLink="list-ad" class="">List ad</a>
+  <router-outlet (activate)="onOutletLoaded($event)"></router-outlet>
 </div>
 
 <ng-template #signIn>
   <p>You are not authenticated. Please log in.</p>
-  <router-outlet></router-outlet>
+  <router-outlet (activate)="onOutletLoaded($event)"></router-outlet>
 </ng-template>
 
 
-@for (user of usersList; ; track user) {
+@for (user of usersList; track user) {
   <p>{{ user.email }}</p>
 }
 

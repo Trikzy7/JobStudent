@@ -1,0 +1,23 @@
+<!-- add-ad.component.html -->
+<p>Hello {{ userConnected.email }} from Add ad</p>
+
+<div class="add-ad-form">
+    <h2>Add a New Ad</h2>
+    <form (ngSubmit)="addAd()">
+      <label for="title">Title:</label>
+      <input type="text" id="title" [(ngModel)]="title" name="title" required />
+  
+      <label for="description">Description:</label>
+      <textarea id="description" [(ngModel)]="description" name="description" required></textarea>
+  
+      <label for="category">Category:</label>
+      <input type="text" id="category" [(ngModel)]="category" name="category" required />
+  
+      <label for="location">Location:</label>
+      <input type="text" id="location" [(ngModel)]="location" name="location" />
+  
+
+      <button type="submit">Add Ad</button>
+    </form>
+  </div>
+  

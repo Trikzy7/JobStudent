@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { UserService } from '@frontend-mf/data-access-user';
+import { User } from 'libs/shared/data-access-user/src/lib/user.model';
 import { distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
@@ -16,42 +17,46 @@ export class AppComponent implements OnInit {
   private userService = inject(UserService);
   isLoggedIn$ = this.userService.isUserLoggedIn$;
 
-  userConnected !: any;
+  userConnected !: User;
   usersList !: any[];
 
   ngOnInit() {
     this.isLoggedIn$
       .pipe(distinctUntilChanged())
       .subscribe(async (loggedIn) => {
-        setTimeout(() => {
-          if (!loggedIn) {
-            this.router.navigateByUrl('login');
-          } else {
+        if (!loggedIn) {
+          this.router.navigateByUrl('login');
+        } else {
 
-            // Get user data
-            let user_id = localStorage.getItem("user_id");
-            if (user_id !== null) {
-              this.userService.getUserById(user_id).subscribe((response: any) => {
-                this.userConnected = response;
-                console.log('User connecteddddddddddd:', this.userConnected);
-              })
-            }
-
-            // Get all users
-            let token_api = localStorage.getItem("token_api");
-            if (token_api !== null) {
-              this.userService.getAllUsers(token_api).subscribe((response: any) => {
-                this.usersList = response;
-                console.log('Users list:', this.usersList);
-              });
-            }
-
-            console.log('User connected:', this.userConnected);
-
-
-            this.router.navigateByUrl('dashboard');
+          // Get user data
+          let user_id = localStorage.getItem("user_id");
+          let token_api = localStorage.getItem("token_api");
+          if (user_id !== null) {
+            this.userService.getUserById(user_id).subscribe((response: any) => {
+              this.userConnected = new User(
+                response.id,
+                response.email,
+                response.password,
+              );
+              console.log('User connecteddddddddddd:', this.userConnected);
+            })
           }
-        });
+
+          // Get all users
+          // let token_api = localStorage.getItem("token_api") as string;
+          // if (token_api !== null) {
+          //   this.userService.getAllUsers(token_api).subscribe((response: any) => {
+          //     this.usersList = response;
+          //     console.log('Users list:', this.usersList);
+          //   });
+          // }
+
+          // console.log('User connected:', this.userConnected);
+
+
+          this.router.navigateByUrl('dashboard');
+        }
+
       });
   }
 
@@ -62,5 +67,9 @@ export class AppComponent implements OnInit {
 
   isUserConnected() {
     return localStorage.getItem("user_id") !== null;
+  }
+
+  onOutletLoaded(component: { userConnected: User; }) {
+    component.userConnected = this.userConnected;
   }
 }
