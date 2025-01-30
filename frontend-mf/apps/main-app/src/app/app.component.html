@@ -23,10 +23,16 @@
 
 <div class="main-div">Main App</div>
 
+
+<div>
+  <!-- Bouton logout affiché uniquement si l'utilisateur est connecté -->
+  <button *ngIf="isLoggedIn$ | async" (click)="logout()">Logout</button>
+</div>
+
 <div *ngIf="isLoggedIn$ | async; else signIn" class="sub-logged-div-content">
-  <p>You are authenticated so you can see this content.</p>
+  <p>Bienvenue {{ userConnected.email }} !</p>
   <a routerLink="dashboard" class="">Dashboard</a>
-  <a routerLink="" class="">Home</a>
+  <a routerLink="home" class="">Home</a>
   <router-outlet></router-outlet>
 </div>
 
@@ -34,4 +40,9 @@
   <p>You are not authenticated. Please log in.</p>
   <router-outlet></router-outlet>
 </ng-template>
+
+
+@for (user of usersList; ; track user) {
+  <p>{{ user.email }}</p>
+}
 

@@ -7,7 +7,7 @@ import { UpdateAdDto } from './dto/update-ad.dto';
 export class AdsController {
   constructor(private readonly adsService: AdsService) {}
 
-  @Post()
+  @Post('create')
   create(@Body() createAdDto: CreateAdDto) {
     return this.adsService.create(createAdDto);
   }

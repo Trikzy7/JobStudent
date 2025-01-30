@@ -1,6 +1,7 @@
 import { Route } from '@angular/router';
 import { loadRemoteModule } from '@nx/angular/mf';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
 
 export const appRoutes: Route[] = [
   {
@@ -16,5 +17,9 @@ export const appRoutes: Route[] = [
   {
     path: '',
     component: AppComponent,
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
   },
 ];

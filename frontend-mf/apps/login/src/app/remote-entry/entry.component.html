@@ -1,0 +1,19 @@
+<div class="login-app">
+  <form class="login-form" (ngSubmit)="submit()">
+    <label>
+      Email:
+      <input type="text" name="email" [(ngModel)]="email" required />
+    </label>
+    <label>
+      Password:
+      <input type="password" name="password" [(ngModel)]="password" required />
+    </label>
+    <button type="submit">{{ isRegisterMode ? 'Register' : 'Login' }}</button>
+  </form>
+
+  <p *ngIf="isLoggedIn$ | async">User is logged in!</p>
+
+  <button (click)="toggleMode()">
+    {{ isRegisterMode ? 'Already have an account? Login' : "Don't have an account? Register" }}
+  </button>
+</div>

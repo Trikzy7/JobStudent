@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NxWelcomeComponent } from './nx-welcome.component';
 
 @Component({
-  imports: [CommonModule, NxWelcomeComponent],
+  imports: [CommonModule],
   selector: 'ng-mf-dashboard-entry',
   template: `<h1>Dashboard PROUUUUUT</h1>`,
 })
