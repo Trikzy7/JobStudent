@@ -13,9 +13,14 @@ import { AuthGuard } from '@nestjs/passport';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Post()
-  async create(@Body() createUserDto: CreateUserDto): Promise<User> {
+  @Post("/signup")
+  async create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
+  }
+
+  @Post("/login")
+  async login(@Body() createUserDto: CreateUserDto) {
+    return this.userService.login(createUserDto);
   }
 
   @UseGuards(AuthGuard('jwt'))

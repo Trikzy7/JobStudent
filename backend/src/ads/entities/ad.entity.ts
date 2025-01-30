@@ -25,8 +25,7 @@ export class Ad extends Document {
   @Prop({ type: Date, default: Date.now })
   updated_at: Date;
 
-  @Prop({ required: true, enum: ['open', 'on work', 'closed', 'canceled'], default: 'open' })
-  status: string;
+
 }
 
 export const AdSchema = SchemaFactory.createForClass(Ad);

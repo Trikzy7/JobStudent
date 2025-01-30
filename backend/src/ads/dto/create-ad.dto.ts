@@ -21,8 +21,4 @@ export class CreateAdDto {
     @IsNotEmpty()
     category: string;
   
-    @IsEnum(['open', 'on work', 'closed', 'canceled'])
-    @IsOptional()
-    status?: 'open' | 'on work' | 'closed' | 'canceled';
-  
 }
