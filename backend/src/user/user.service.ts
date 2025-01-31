@@ -6,7 +6,7 @@ import { Model } from 'mongoose';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 import * as validator from 'validator';
 
 @Injectable()
@@ -42,7 +42,7 @@ export class UserService {
     }
 
     // Hash password
-    const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
+    const hashedPassword = await bcrypt.hashSync(createUserDto.password, 10);
 
     // Création de l'utilisateur
     const newUser = new this.userModel({
@@ -74,7 +74,7 @@ export class UserService {
     }
 
     // Compare the password
-    const isPasswordValid = await bcrypt.compare(createUserDto.password, existingUser.password);
+    const isPasswordValid = await bcrypt.compareSync(createUserDto.password, existingUser.password);
 
     if (!isPasswordValid) {
       throw new BadRequestException({ type: 'password', message: 'Password is incorrect' });

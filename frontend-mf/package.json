@@ -2,7 +2,9 @@
   "name": "@frontend-mf/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build": "npx nx run-many --target=build --projects=main-app,dashboard,login"
+  },
   "private": true,
   "devDependencies": {
     "@angular-devkit/build-angular": "~19.0.0",
@@ -43,8 +45,8 @@
     "@angular/platform-browser": "~19.0.0",
     "@angular/platform-browser-dynamic": "~19.0.0",
     "@angular/router": "~19.0.0",
+    "@nx/angular": "^20.3.0",
     "rxjs": "~7.8.0",
-    "zone.js": "~0.15.0",
-    "@nx/angular": "^20.3.0"
+    "zone.js": "~0.15.0"
   }
 }

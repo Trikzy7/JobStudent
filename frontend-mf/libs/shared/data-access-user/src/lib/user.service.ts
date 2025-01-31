@@ -134,7 +134,7 @@ export class UserService {
       map((response) => {
         // Créer une instance de User à partir de la réponse
         const user = new User(
-          parseInt(userId),
+          userId,
           response.email,
           response.password
         );
