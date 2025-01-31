@@ -25,7 +25,6 @@ export class Ad extends Document {
   @Prop({ type: Date, default: Date.now })
   updated_at: Date;
 
-
 }
 
 export const AdSchema = SchemaFactory.createForClass(Ad);
