@@ -1,4 +1,5 @@
 export class Ad {
+    id!: string;
     title!: string;
     description!: string;
     poster_id!: string;
@@ -7,7 +8,8 @@ export class Ad {
     created_at!: string;
     updated_at!: string;
 
-    constructor(title: string, description: string, poster_id: string, location: string, category: string, created_at: string, updated_at: string) {
+    constructor(id:string, title: string, description: string, poster_id: string, location: string, category: string, created_at: string, updated_at: string) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.poster_id = poster_id;

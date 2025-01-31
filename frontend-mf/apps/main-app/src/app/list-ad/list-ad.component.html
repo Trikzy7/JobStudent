@@ -1,5 +1,7 @@
 <p>list-ad works!</p>
 
 @for (ad of listAds; track ad) {
-    <p>{{ ad.title }}</p>
+    <a routerLink="/ad-detail/{{ad.id}}">
+        <p>{{ ad.title }}</p>
+    </a>
 }

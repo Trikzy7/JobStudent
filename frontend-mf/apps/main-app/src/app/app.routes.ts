@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AddAdComponent } from './add-ad/add-ad.component';
 import { ListAdComponent } from './list-ad/list-ad.component';
+import { DetailAdComponent } from './detail-ad/detail-ad.component';
 
 export const appRoutes: Route[] = [
   {
@@ -31,5 +32,9 @@ export const appRoutes: Route[] = [
   {
     path: 'list-ad',
     component: ListAdComponent,
+  },
+  {
+    path: 'ad-detail/:id',
+    component: DetailAdComponent
   },
 ];

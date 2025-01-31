@@ -4,10 +4,11 @@ import { Ad } from '../model/ad.model';
 import { AdService } from '../services/ad.service';
 import { User } from 'libs/shared/data-access-user/src/lib/user.model';
 import { Token } from '@angular/compiler';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'ng-mf-list-ad',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './list-ad.component.html',
   styleUrl: './list-ad.component.css',
 })
@@ -25,6 +26,8 @@ export class ListAdComponent {
     if (token_api !== null) {
       this.adService.getAllAds(token_api).subscribe((ads) => {
         this.listAds = ads;
+        console.log(this.listAds);
+        
       });
     }
   }

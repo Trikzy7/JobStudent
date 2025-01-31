@@ -27,6 +27,7 @@ export class AdService {
       map((response) => {
         // Assurez-vous que la réponse contient bien un tableau d'objets et transforme chaque élément en une instance d'Ad
         return response.map(ad => new Ad(
+          ad._id,
           ad.title,
           ad.description,
           ad.poster_id,
@@ -36,6 +37,23 @@ export class AdService {
           ad.updated_at
         ));
       })
+    );
+  }
+
+  getAdById(id: string): Observable<Ad> {
+    const url = `http://localhost:3000/ads/${id}`;
+
+    return this.http.get<any>(url).pipe(
+      map((ad) => new Ad(
+        String(ad._id),
+        ad.title,
+        ad.description,
+        ad.poster_id,
+        ad.location,
+        ad.category,
+        ad.created_at,
+        ad.updated_at
+      ))
     );
   }
 

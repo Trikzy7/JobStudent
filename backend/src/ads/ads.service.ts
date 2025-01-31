@@ -19,7 +19,7 @@ export class AdsService {
     return this.adModel.find().exec();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.adModel.findById(id).exec();
   }
 
