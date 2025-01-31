@@ -13,6 +13,8 @@ export class AdService {
   constructor(private http: HttpClient) {}
 
   createAd(adData: any): Observable<any> {
+    console.log('adData:', adData);
+    
     return this.http.post<any>(this.apiUrl, adData);
   }
 
