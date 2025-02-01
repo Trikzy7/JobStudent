@@ -11,7 +11,7 @@ import { KafkaService } from './kafka.service';
         options: {
           client: {
             clientId: 'ad-service',
-            brokers: ['kafka:9093'],
+            brokers: ['localhost:9093'],
           },
           consumer: {
             groupId: 'ad-consumer-group',

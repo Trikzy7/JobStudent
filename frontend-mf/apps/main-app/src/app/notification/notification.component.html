@@ -1,1 +1,17 @@
 <p>notification works!</p>
+
+<div class="notifications">
+    <h3>Notifications</h3>
+    <ul>
+
+    @for(notification of notifications; track notification) {
+        <li>
+            <strong>{{ notification.title }}</strong> - {{ notification.createdAt }}
+        </li>
+    }
+      <!-- <li *ngFor="let notification of notifications">
+        <strong>{{ notification.title }}</strong> - {{ notification.createdAt }}
+      </li> -->
+    </ul>
+  </div>
+  

@@ -1,38 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { StompService } from '@stomp/ng2-stompjs';
-import { WebSocketSubject } from 'rxjs/webSocket';
-
-
+import { NotificationService } from '../services/notification.service';
 
 @Component({
-  selector: 'ng-mf-notification',
-  imports: [CommonModule],
+  selector: 'app-notifications',
   templateUrl: './notification.component.html',
-  styleUrl: './notification.component.css',
+  styleUrls: ['./notification.component.css']
 })
-export class NotificationComponent implements OnInit {
-  private wsSubject!: WebSocketSubject<any>;
+export class NotificationsComponent implements OnInit {
+  notifications: any[] = [];
 
-  constructor() {}
+  constructor(private notificationService: NotificationService) {}
 
   ngOnInit() {
-    // Créer une connexion WebSocket vers le serveur
-    this.wsSubject = new WebSocketSubject('ws://localhost:8080/ws/notifications');  // Assure-toi que l'URL soit correcte
-
-    // Souscrire aux messages reçus via WebSocket
-    this.wsSubject.subscribe(
-      (message) => {
-        console.log('Message reçu : ', message);
-        alert('Nouvelle annonce ajoutée: ' + message);
-      },
-      (err) => console.error('Erreur WebSocket', err),
-      () => console.log('WebSocket fermé')
-    );
-  }
-
-  // Envoi d'un message via WebSocket (optionnel)
-  sendMessage(message: string) {
-    this.wsSubject.next({ content: message });
+    this.notificationService.listenForNotifications().subscribe((notification) => {
+      this.notifications.push(notification);
+      console.log("Notification reçue :", notification);
+      
+    });
   }
 }
