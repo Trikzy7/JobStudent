@@ -4,10 +4,11 @@ import { Router, RouterModule } from '@angular/router';
 import { UserService } from '@frontend-mf/data-access-user';
 import { User } from 'libs/shared/data-access-user/src/lib/user.model';
 import { distinctUntilChanged } from 'rxjs/operators';
+import { NotificationsComponent } from './notification/notification.component';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, NotificationsComponent],
   selector: 'ng-mf-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
