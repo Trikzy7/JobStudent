@@ -8,6 +8,9 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
 import { KafkaConsumerService } from './kafka-consumer/kafka-consumer.service';
 import { NotificationService } from './notification/notification.service';
 import { NotificationsGateway } from './notification/notification.gateway';
+import { ChatGateway } from './chat/chat.gateway';
+import { ChatService } from './chat/chat.service';
+import { ChatController } from './chat/chat.controller';
 
 @Module({
   imports: [
@@ -29,6 +32,7 @@ import { NotificationsGateway } from './notification/notification.gateway';
       },
     ]),
   ],
-  providers: [KafkaConsumerService, NotificationService, NotificationsGateway],
+  controllers: [ChatController],
+  providers: [KafkaConsumerService, NotificationService, NotificationsGateway, ChatService, ChatGateway],
 })
 export class AppModule {}

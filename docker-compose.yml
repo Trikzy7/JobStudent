@@ -107,6 +107,16 @@ services:
   #   networks:
   #     - app-network
 
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672" # Port pour les messages
+      - "15672:15672" # Port pour le dashboard de RabbitMQ
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
   kafka:
     image: wurstmeister/kafka
     container_name: kafka

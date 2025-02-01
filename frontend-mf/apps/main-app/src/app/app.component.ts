@@ -5,6 +5,7 @@ import { UserService } from '@frontend-mf/data-access-user';
 import { User } from 'libs/shared/data-access-user/src/lib/user.model';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { NotificationsComponent } from './notification/notification.component';
+import { ChatComponent } from './chat/chat.component';
 
 @Component({
   standalone: true,
