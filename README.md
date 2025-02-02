@@ -108,5 +108,12 @@ app.connectMicroservice<MicroserviceOptions>({
 });
 ```
 
+## Docker Setup
 
+All services, including Kafka, RabbitMQ, and each microfrontend (main-app, login, etc.), have been dockerized. This ensures a consistent environment across different deployments and simplifies the setup process. Each service runs in its own container, allowing for scalability and easy management.
 
+# Start the project
+To start the project, you only have to start all services on docker based on docker-compose.yml file with the following command:
+```shell
+docker-compose up -d
+```
