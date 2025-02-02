@@ -4,11 +4,13 @@ import { Ad } from '../model/ad.model';
 import { AdService } from '../services/ad.service';
 import { User } from 'libs/shared/data-access-user/src/lib/user.model';
 import { Token } from '@angular/compiler';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { LineAdComponent } from '../line-ad/line-ad.component';
+
 
 @Component({
   selector: 'ng-mf-list-ad',
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, LineAdComponent],
   templateUrl: './list-ad.component.html',
   styleUrl: './list-ad.component.css',
 })
@@ -17,10 +19,13 @@ export class ListAdComponent {
   @Input() userConnected!: User;
   listAds!: Ad[];
 
-  constructor(private adService: AdService) {}
+  constructor(
+    private adService: AdService,
+    private router: Router,
+    ) {}
 
   ngOnInit() {
-    console.log("--------------------" + this.userConnected);
+    console.log("--------------------" + this.userConnected.email);
     let token_api = localStorage.getItem("token_api");
 
     if (token_api !== null) {
@@ -30,6 +35,10 @@ export class ListAdComponent {
         
       });
     }
+  }
+
+  goToAddAd() {
+    this.router.navigateByUrl('add-ad');
   }
 
 }

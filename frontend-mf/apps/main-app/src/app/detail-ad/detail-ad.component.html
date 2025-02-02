@@ -1,4 +1,24 @@
-<p>detail-ad works!</p>
-
-<h1>{{ this.ad.title }}</h1>
-<app-chat [adId]="this.ad.id"></app-chat>
+<div class="detail-ad-container px-8 py-6 bg-gray-50 min-h-screen mt-[40px]">
+    <!-- Ad Title -->
+    <h1 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-gray-300 pb-2">
+      {{ ad.title }}
+    </h1>
+  
+    <!-- Ad Details Section -->
+    <div class="ad-details mb-6">
+      <div class="text-gray-700 text-lg space-y-3">
+        <p><strong>Category:</strong> {{ ad.category }}</p>
+        <p><strong>Location:</strong> {{ ad.location }}</p>
+        <p><strong>Description:</strong> {{ ad.description }}</p>
+        <p><strong>Posted on:</strong> {{ ad.created_at | date: 'short' }}</p>
+        <p><strong>Last updated:</strong> {{ ad.updated_at | date: 'short' }}</p>
+      </div>
+    </div>
+  
+    <!-- Chat Section -->
+    <div class="chat-container mt-8 bg-white p-6 rounded-lg shadow-md">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Chat about this Ad</h2>
+      <app-chat [adId]="ad.id" [userConnected]="userConnected"></app-chat>
+    </div>
+  </div>
+  

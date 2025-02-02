@@ -1,19 +1,34 @@
-import { Controller } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { EventPattern } from '@nestjs/microservices';
+import { ChatService } from './chat.service';
+import { ChatMessage } from './entities/chat.entity';
+import { CreateChatDto } from './dto/create-chat.dto';
 
 @Controller('chat')
 export class ChatController {
   private chatRooms = new Map<string, any[]>(); // Stocke les messages par annonce
 
+  constructor(private readonly chatService: ChatService) {}
+  
   @EventPattern('chat.newMessage')
-  handleNewMessage(data: { adId: string; userId: string; message: string; timestamp: Date }) {
-    const { adId, userId, message, timestamp } = data;
+  handleNewMessage(data: { adId: string; userId: string; userEmail:string, message: string; timestamp: Date }) {
+    const { adId, userId, userEmail, message, timestamp } = data;
 
     if (!this.chatRooms.has(adId)) {
       this.chatRooms.set(adId, []);
     }
 
-    this.chatRooms.get(adId).push({ userId, message, timestamp });
+    this.chatRooms.get(adId).push({ userId, userEmail, message, timestamp });
     console.log(`📩 [Chat] Message reçu pour l'annonce ${adId}:`, message);
+  }
+
+  @Post('create')
+    async createMessage(@Body() createChatDto: CreateChatDto) {
+        return this.chatService.createMessage(createChatDto);
+    }
+
+  @Get('/:adId')
+  getMessagesByAdId(@Param('adId') adId: string) {
+    return this.chatService.getMessagesByAdId(adId);
   }
 }

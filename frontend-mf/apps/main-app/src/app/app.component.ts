@@ -6,10 +6,11 @@ import { User } from 'libs/shared/data-access-user/src/lib/user.model';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { NotificationsComponent } from './notification/notification.component';
 import { ChatComponent } from './chat/chat.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, RouterModule, NotificationsComponent],
+  imports: [CommonModule, RouterModule, NotificationsComponent, TopBarComponent],
   selector: 'ng-mf-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
@@ -57,7 +58,7 @@ export class AppComponent implements OnInit {
           // console.log('User connected:', this.userConnected);
 
 
-          this.router.navigateByUrl('dashboard');
+          this.router.navigateByUrl('list-ad');
         }
 
       });

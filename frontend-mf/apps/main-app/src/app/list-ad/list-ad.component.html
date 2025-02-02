@@ -1,7 +1,17 @@
-<p>list-ad works!</p>
-
-@for (ad of listAds; track ad) {
-    <a routerLink="/ad-detail/{{ad.id}}">
-        <p>{{ ad.title }}</p>
-    </a>
-}
+<div class="flex justify-between items-center mb-4 pt-[40px]">
+    <!-- Title on the left -->
+    <h2 class="text-2xl font-semibold text-gray-800">List of Ads</h2>
+    
+    <!-- Button on the right to add an ad -->
+    <button class="bg-[#48a1a8] text-white font-bold py-2 px-4 rounded hover:bg-[#3d8489]" (click)="goToAddAd()">
+      Add an Ad
+    </button>
+  </div>
+  
+  <!-- List of ads -->
+  <div class="space-y-4 ">
+    @for (ad of listAds; track ad) {
+      <ng-mf-line-ad [ad]="ad" [userConnected]="userConnected"></ng-mf-line-ad>
+    }
+  </div>
+  

@@ -11,12 +11,13 @@ import { NotificationsGateway } from './notification/notification.gateway';
 import { ChatGateway } from './chat/chat.gateway';
 import { ChatService } from './chat/chat.service';
 import { ChatController } from './chat/chat.controller';
+import { ChatModule } from './chat/chat.module';
 
 @Module({
   imports: [
     // MongooseModule.forRoot('mongodb://mongodb:27017/job-student-sandbox'), // Remplace avec ton URI
     MongooseModule.forRoot('mongodb://localhost:27017/job-student-sandbox'), // Remplace avec ton URI
-    UserModule, AdsModule, AuthModule, 
+    UserModule, AdsModule, AuthModule, ChatModule,
     ClientsModule.register([
       {
         name: 'KAFKA_SERVICE',
@@ -31,8 +32,9 @@ import { ChatController } from './chat/chat.controller';
         },
       },
     ]),
+    
   ],
   controllers: [ChatController],
-  providers: [KafkaConsumerService, NotificationService, NotificationsGateway, ChatService, ChatGateway],
+  providers: [KafkaConsumerService, NotificationService, NotificationsGateway, ChatGateway,],
 })
 export class AppModule {}

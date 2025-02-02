@@ -1,53 +1,17 @@
-<!-- <div class="mainApp-nav">Main App</div>
-
-@if (isLoggedIn$ | async) {
-  <p>User LOGGED</p>
-  <a routerLink="dashboard" class="">Dashboard</a>
-  <h1>proutos logged</h1>
-} @else {
-  <p>User NOT LOGGED</p>
-}
-<router-outlet></router-outlet> -->
-
-
-<!-- <div class="mainApp-nav">Main App</div>
-    <div *ngIf="isLoggedIn$ | async; else signIn">
-      You are authenticated so you can see this content.
-
-      <a routerLink="dashboard" class="">Dashboard</a>
-
-    </div>
-    <ng-template #signIn><router-outlet></router-outlet></ng-template>
-    <router-outlet></router-outlet> -->
-
-
-<div class="main-div">Main aaapp</div>
-<app-notifications></app-notifications>
-
-
-<div>
-  <!-- Bouton logout affiché uniquement si l'utilisateur est connecté -->
-  <button *ngIf="isLoggedIn$ | async" (click)="logout()">Logout</button>
+<ng-mf-top-bar></ng-mf-top-bar>
+<div class="main-div px-[150px] py-[40px]">
+  
+  <div *ngIf="isLoggedIn$ | async; else signIn" class="sub-logged-div-content">
+    <!-- Highlighted title with underline at 1/4 of the width -->
+    <h1 class="text-4xl font-bold text-gray-800 mb-4 relative w-fit">
+      Bienvenue {{ userConnected.email }} !
+      <span class="absolute left-0 bottom-[-10px] w-1/4 h-2 bg-[#48a1a8]"></span> <!-- Updated color -->
+    </h1>
+  
+    <router-outlet (activate)="onOutletLoaded($event)"></router-outlet>
+  </div>
+  
+  <ng-template #signIn>
+    <router-outlet (activate)="onOutletLoaded($event)"></router-outlet>
+  </ng-template>
 </div>
-
-<div *ngIf="isLoggedIn$ | async; else signIn" class="sub-logged-div-content">
-  <p>Bienvenue {{ userConnected.email }} !</p>
-  <a routerLink="dashboard" class="">Dashboard</a>
-  <a routerLink="home" class="">Home</a>
-  <a routerLink="add-ad" class="">Add an ad</a>
-  <a routerLink="list-ad" class="">List ad</a>
-  <router-outlet (activate)="onOutletLoaded($event)"></router-outlet>
-</div>
-
-<ng-template #signIn>
-  <p>You are not authenticated. Please log in.</p>
-  <router-outlet (activate)="onOutletLoaded($event)"></router-outlet>
-</ng-template>
-
-
-
-
-<!-- @for (user of usersList; track user) {
-  <p>{{ user.email }}</p>
-} -->
-

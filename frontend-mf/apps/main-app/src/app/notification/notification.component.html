@@ -1,17 +1,21 @@
-<p>notification works!</p>
-
-<div class="notifications">
-    <h3>Notifications</h3>
-    <ul>
-
-    @for(notification of notifications; track notification) {
-        <li>
-            <strong>{{ notification.title }}</strong> - {{ notification.createdAt }}
-        </li>
+<div class="notifications bg-white shadow-lg rounded-lg p-4 max-h-60 overflow-y-auto">
+  <ul>
+    @for (notification of notifications; track notification) {
+      <li class="flex items-start space-x-2 mb-4 border-b pb-2">
+        <!-- Icône de notification -->
+        <div class="flex-shrink-0">
+          <!-- <svg class="w-6 h-6 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3" />
+          </svg> -->
+        </div>
+        
+        <!-- Contenu de la notification -->
+        <div class="flex-1">
+          <p class="text-sm text-gray-600">Nouvelle Annonce:</p>
+          <strong class="text-lg text-gray-800">{{ notification.title }}</strong>
+          <p class="text-xs text-gray-500 mt-1">{{ notification.createdAt | date:'short' }}</p>
+        </div>
+      </li>
     }
-      <!-- <li *ngFor="let notification of notifications">
-        <strong>{{ notification.title }}</strong> - {{ notification.createdAt }}
-      </li> -->
-    </ul>
-  </div>
-  
+  </ul>
+</div>

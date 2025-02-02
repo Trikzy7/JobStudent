@@ -1,23 +1,70 @@
 <!-- add-ad.component.html -->
-<p>Hello {{ userConnected.email }} from Add ad</p>
+<div class="add-ad-container bg-gray-50 mt-[60px] p-6 rounded-lg shadow-lg w-full max-w-xl mx-auto ">
 
-<div class="add-ad-form">
-    <h2>Add a New Ad</h2>
-    <form (ngSubmit)="addAd()">
-      <label for="title">Title:</label>
-      <input type="text" id="title" [(ngModel)]="title" name="title" required />
-  
-      <label for="description">Description:</label>
-      <textarea id="description" [(ngModel)]="description" name="description" required></textarea>
-  
-      <label for="category">Category:</label>
-      <input type="text" id="category" [(ngModel)]="category" name="category" required />
-  
-      <label for="location">Location:</label>
-      <input type="text" id="location" [(ngModel)]="location" name="location" />
-  
+  <div class="add-ad-form">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Add a New Ad</h2>
 
-      <button type="submit">Add Ad</button>
+    <form (ngSubmit)="addAd()" class="space-y-6">
+      <!-- Title Field -->
+      <div>
+        <label for="title" class="block text-gray-700 font-medium">Title:</label>
+        <input
+          type="text"
+          id="title"
+          [(ngModel)]="title"
+          name="title"
+          required
+          class="w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:color-[#3d8489]"
+        />
+      </div>
+
+      <!-- Description Field -->
+      <div>
+        <label for="description" class="block text-gray-700 font-medium">Description:</label>
+        <textarea
+          id="description"
+          [(ngModel)]="description"
+          name="description"
+          required
+          rows="4"
+          class="w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:color-[#3d8489]"
+        ></textarea>
+      </div>
+
+      <!-- Category Field -->
+      <div>
+        <label for="category" class="block text-gray-700 font-medium">Category:</label>
+        <input
+          type="text"
+          id="category"
+          [(ngModel)]="category"
+          name="category"
+          required
+          class="w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:color-[#3d8489]"
+        />
+      </div>
+
+      <!-- Location Field -->
+      <div>
+        <label for="location" class="block text-gray-700 font-medium">Location:</label>
+        <input
+          type="text"
+          id="location"
+          [(ngModel)]="location"
+          name="location"
+          class="w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:color-[#3d8489]"
+        />
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-center">
+        <button
+          type="submit"
+          class="mt-4 bg-[#48a1a8] text-white py-2 px-6 rounded-md hover:bg-[#3d8489] transition-colors focus:outline-none focus:ring-2 focus:bg-[#3d8489]"
+        >
+          Add Ad
+        </button>
+      </div>
     </form>
   </div>
-  
+</div>
