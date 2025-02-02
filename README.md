@@ -15,7 +15,7 @@ The microfrontend configuration is defined in the `module.federation.manifest.js
 Example of the file:
 ```json
 {
-  "login": "http://localhost:4201/remoteEntry.js"
+  "login": "http://localhost:4201/"
 }
 ```
 
