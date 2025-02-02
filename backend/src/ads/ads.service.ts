@@ -23,7 +23,8 @@ export class AdsService {
 
   private kafka = new Kafka({
     clientId: 'ad-publisher',
-    brokers: ['localhost:9093'],
+    // brokers: ['localhost:9093'],
+    brokers: ['kafka:9093'],
   });
 
   private producer = this.kafka.producer();

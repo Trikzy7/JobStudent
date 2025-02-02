@@ -6,10 +6,10 @@ WORKDIR /usr/src/app
 
 # Copier les fichiers package.json et package-lock.json (ou yarn.lock)
 COPY package*.json ./
-RUN rm -rf node_modules package-lock.json && npm install
+RUN rm -rf node_modules package-lock.json && npm install --legacy-peer-deps
 
 # Installer les dépendances de l'application
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 # Copier tous les autres fichiers du projet
 COPY . .

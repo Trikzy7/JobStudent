@@ -11,7 +11,8 @@ async function bootstrap() {
     transport: Transport.KAFKA,
     options: {
       client: {
-        brokers: ['localhost:9093'], // Adresse du broker Kafka
+        // brokers: ['localhost:9093'], // Adresse du broker Kafka
+        brokers: ['kafka:9093'], // Adresse du broker Kafka
       },
       consumer: {
         groupId: 'nestjs-consumer-client', // Groupe Kafka
@@ -26,7 +27,8 @@ async function bootstrap() {
   app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.RMQ,
     options: {
-      urls: ['amqp://guest:guest@localhost:5672'],
+      // urls: ['amqp://guest:guest@localhost:5672'],
+      urls: ['amqp://guest:guest@rabbitmq:5672'],
       queue: 'chat_messages',
       queueOptions: {
         durable: false,

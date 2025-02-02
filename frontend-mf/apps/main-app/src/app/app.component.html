@@ -4,7 +4,7 @@
   <div *ngIf="isLoggedIn$ | async; else signIn" class="sub-logged-div-content">
     <!-- Highlighted title with underline at 1/4 of the width -->
     <h1 class="text-4xl font-bold text-gray-800 mb-4 relative w-fit">
-      Bienvenue {{ userConnected.email }} !
+      Welcome {{ userConnected.email }} !
       <span class="absolute left-0 bottom-[-10px] w-1/4 h-2 bg-[#48a1a8]"></span> <!-- Updated color -->
     </h1>
   

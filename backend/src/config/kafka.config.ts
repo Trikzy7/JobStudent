@@ -7,7 +7,8 @@ export const kafkaConfig: ClientsModuleOptions = [
     options: {
       client: {
         clientId: 'task-manager',
-        brokers: ['localhost:9093'], // Assure-toi que ce hostname est bien celui défini dans docker-compose
+        // brokers: ['localhost:9093'], // Assure-toi que ce hostname est bien celui défini dans docker-compose
+        brokers: ['kafka:9093'], // Assure-toi que ce hostname est bien celui défini dans docker-compose
       },
       consumer: {
         groupId: 'notification-group',

@@ -18,7 +18,8 @@ export class KafkaConsumerService implements OnModuleInit, OnModuleDestroy {
 
   private kafka = new Kafka({
     clientId: 'ad-consumer',
-    brokers: ['localhost:9093'],
+    // brokers: ['localhost:9093'],
+    brokers: ['kafka:9093'],
   });
 
   private consumer = this.kafka.consumer({ groupId: 'ad-consumer-group' });
